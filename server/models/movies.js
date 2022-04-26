@@ -5,7 +5,7 @@ const movieSchema = mongoose.Schema({
     title: { type: String, required: true},
     info: { type: {
         directors: { type: [String], required: true },
-        release_date: { type: Date(), required: true },
+        release_date: { type: String, required: true },
         rating: { type: Number, required: true },
         genres: { type: [String], required: true },
         image_url: { type: String, required: true },
@@ -14,8 +14,8 @@ const movieSchema = mongoose.Schema({
         running_time: { type: Number, required: true },
         actors: { type: [String], required: true }
     }}
-}, { 'collection': 'Movies'});
+}, { 'collection': 'movies'});
 
-const movies = mongoose.model('Movies', movieSchema);
+const movies = mongoose.model('movies', movieSchema);
 
 export default movies;

@@ -13,3 +13,12 @@
     display: flex;
     list-style-type: none;
 }
+
+.register-button {
+    padding: 5px;
+}
+
+.user-name {
+    margin: 2px;
+    padding: 5px;
+}

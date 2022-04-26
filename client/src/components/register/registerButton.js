@@ -1,9 +1,9 @@
 import './register.css';
 
-function RegisterButton() {
+function RegisterButton({ setRegister, register }) {
     return (
         <div>
-            <button className="r-btn" type="button">Register</button>
+            <button onClick={() => setRegister(!register)} className="r-btn" type="button">Register</button>
         </div>
     );
   }
