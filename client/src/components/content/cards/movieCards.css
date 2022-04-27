@@ -14,12 +14,25 @@
     margin: 10px;
   }
 
-  .mc-img {
-      height: 400px;
-      width: 300px;
-  }
+.mc-img {
+    height: 400px;
+    width: 300px;
+}
 
-  .movie-section {
-      display: flex;
-      flex-direction: column;
-  }
+.movie-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info {
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.mc-length,
+.mc-rating {
+    color: red;
+}
+
+/* .mc-length {
+    color: red;
+} */

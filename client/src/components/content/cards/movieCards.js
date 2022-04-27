@@ -15,10 +15,9 @@ function MovieCard({ title, img, rating, time }) {
       />
       <div className="card-info">
         <h2 className="mc-title">{title}</h2>
-        <p className="mc-time-rating">Rating: {rating}</p>
-        <p>Length: {time}</p>
+        <p className="mc-rating">Rating: {rating}</p>
+        <p className="mc-length">Length: {time}</p>
         <div>
-          <button>View Full</button>
           <button>Like</button>
         </div>
       </div>
