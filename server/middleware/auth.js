@@ -1,26 +1,21 @@
 import jwt from "jsonwebtoken";
 
+const JWT_SECRET = 'asd32f1a3sd21fa5wvew325rt263r#$!@*wfasf*&8B@';
+
 const auth = async (req, res, next) => {
   try {
-    const secret = '123456789KdafskjLKAJedfLKDSjf;lSDDlkfjSDlgfkadsLKJD*9g234gh(Sdg314kt()D';
-    const token = req.headers.authorization.split(" ")[1];
-    const isCustomAuth = token.length < 50;
-    // console.log(token);
-    let decodedData;
+    const token = req.cookies.token;
+    if (!token) {
+      return res.status(401).json({ errorMessage: 'Unauthorizes' });
+    }
 
-    if (token && isCustomAuth) {      
-      decodedData = jwt.verify(token, secret);
-
-      console.log(decodedData);
-      req.userId = decodedData?.id;
-    } else {
-      decodedData = jwt.decode(token);
-      req.userId = decodedData?.sub;
-    }    
+    const verified = jwt.verify(token, JWT_SECRET);
+    req.user = verified.user;
 
     next();
   } catch (error) {
     console.log(error);
+    res.status(401).json({ errorMessage: 'Unauthorizes' });
   }
 };
 

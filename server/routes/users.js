@@ -1,10 +1,14 @@
 import express from 'express';
 
-import { signUp } from '../controllers/users.js';
+import { getLikedMovies, likeMovie, logout, login, signUp } from '../controllers/users.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-// router.get('/login', login);
-router.get('/signUp', signUp);
+router.post('/login', login);
+router.get('/logout', logout);
+router.get('/getLikedMovies', auth, getLikedMovies);
+router.post('/signUp', signUp);
+router.patch('/likeMovie', auth, likeMovie);
 
 export default router;

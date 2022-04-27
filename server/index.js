@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 
 import movieRoutes from './routes/movies.js';
 import userRoutes from './routes/users.js';
@@ -11,6 +12,8 @@ const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.json());
+app.use(cookieParser());
 app.use(cors());
 
 app.use('/movies', movieRoutes);

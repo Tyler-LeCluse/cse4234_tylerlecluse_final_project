@@ -1,63 +1,37 @@
 // import "./registerFrom.css";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-
-// import { signUp } from '../../../actions/users';
+import Axios from 'axios';
 
 function RegisterForm() {
-  // const [first, setFirst] = useState(null);
-  // const [last, setLast] = useState(null);
-  // const [password, setPassword] = useState(null);
-  // const [email, setEmail] = useState(null);
   const [newUser, setNewUser] = useState({ first: '', last: '', email: '', password: '' });
 
   const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // const dispatch = useDispatch();
-
-  // function handleFirst(e) {
-  //   setFirst(e.target.value);
-  // }
-
-  // function handleLast(e) {
-  //   setLast(e.target.value);
-  // }
-
-  // function handlePassword(e) {
-  //   setPassword(e.target.value);
-  // }
-
-  // function handleEmail(e) {
-  //   setEmail(e.target.value);
-  // }
 
   const handleChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    const name = e.target.name;
+    const value = e.target.value;
+    setNewUser(values => ({...values, [name]: value}));
   }
-
-  // async function handleNewUser() {
-  //   await setNewUser({
-  //     username: `${first} ${last}`,
-  //     email: email,
-  //     password: password
-  //   });
-  // }
 
   // Handling the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     // handleNewUser();
-    console.log(newUser);
     if (newUser === null) {
       setError(true);
     } else {
-      // dispatch(signUp(newUser));
+      Axios.post('http://localhost:5000/users/singUp', newUser)
+        .then(res => {
+          console.log(res)
+        })
+        .catch(e => console.log(e));
       setSubmitted(true);
       setError(false);
     }
   };
-
+  console.log(newUser);
   return (
     <div>
       {error ? (
@@ -67,22 +41,26 @@ function RegisterForm() {
       ) : (
         <form>
           <label>First:</label>
-          <input value={newUser.first ? newUser.first : "First Name"} onChange={handleChange} />
+          <input name="first" value={newUser.first || ''} onChange={handleChange} placeHolder='First Name'/>
           <br />
           <label>Last:</label>
-          <input value={newUser.last ? newUser.last : "Last Name"} onChange={handleChange} />
+          <input name="last" value={newUser.last || ''} onChange={handleChange} placeHolder='Last Name'/>
           <br />
           <label>email:</label>
           <input
-            value={newUser.email ? newUser.email : "example@address.com"}
+            value={newUser.email || ''}
             onChange={handleChange}
             type='email'
+            placeHolder='example@address.com'
+            name="email"
           />
           <br />
           <label>password:</label>
           <input
-            value={newUser.password ? newUser.password : "********"}
+            value={newUser.password || ''}
+            placeHolder='********'
             onChange={handleChange}
+            name="password"
           />
           <br />
           <button onClick={handleSubmit} className="btn" type="submit">
