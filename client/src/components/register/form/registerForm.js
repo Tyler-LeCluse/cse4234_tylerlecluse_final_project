@@ -1,8 +1,8 @@
 // import "./registerFrom.css";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
-import { signUp } from '../../../actions/users';
+// import { signUp } from '../../../actions/users';
 
 function RegisterForm() {
   // const [first, setFirst] = useState(null);
@@ -14,7 +14,7 @@ function RegisterForm() {
   const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // function handleFirst(e) {
   //   setFirst(e.target.value);
@@ -52,7 +52,7 @@ function RegisterForm() {
     if (newUser === null) {
       setError(true);
     } else {
-      dispatch(signUp(newUser));
+      // dispatch(signUp(newUser));
       setSubmitted(true);
       setError(false);
     }
