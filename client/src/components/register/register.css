@@ -1,0 +1,11 @@
+.r-btn {
+    background: #010914;
+    border-radius: 4px;
+    border-color: red;
+    color: red;
+}
+
+.r-btn:hover {
+    background: red;
+    color: #010914;
+}

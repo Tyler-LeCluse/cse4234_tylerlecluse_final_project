@@ -1,0 +1,38 @@
+/* .cards {
+    display: flex;
+
+} */
+
+.movie-header h2 {
+    font-size: 3rem;
+    color: red;
+}
+
+.movie-card {
+    background-color: black;
+    color: white;
+    margin: 10px;
+  }
+
+.mc-img {
+    height: 400px;
+    width: 300px;
+}
+
+.movie-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info {
+    padding: 5px;
+    padding-bottom: 10px;
+}
+.mc-length,
+.mc-rating {
+    color: red;
+}
+
+/* .mc-length {
+    color: red;
+} */
